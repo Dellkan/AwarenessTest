@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    defaultConfig {
+        applicationId "no.zeppelin.awarenesstest"
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    maven() {
+        name 'SonaType snapshot repository'
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url "https://s3.amazonaws.com/repo.commonsware.com"
+    }
+    maven {
+        url "https://dl.bintray.com/dellkan/maven/"
+    }
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+
+    compile('org.robobinding:robobinding:0.8.15-SNAPSHOT:with-aop-and-dependencies')
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.dellkan:robobinding-helpers-api:0.5.4-DEV'
+    compile 'com.dellkan:robobinding-helpers-common:0.5.4-DEV'
+    compile 'com.dellkan:net:0.1.0-DEV'
+    compile 'com.dellkan:fragment-bootstrap:0.1.1-DEV'
+    compile 'com.android.support:support-v4:24.2.1'
+    testCompile 'junit:junit:4.12'
+    apt 'org.robobinding:codegen:0.8.15-SNAPSHOT'
+    apt 'com.dellkan:robobinding-helpers-processor:0.5.4-DEV'
+
+    // Google play
+    compile 'com.google.android.gms:play-services-awareness:9.6.1'
+}

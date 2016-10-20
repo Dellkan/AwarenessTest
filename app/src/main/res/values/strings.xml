@@ -1,0 +1,16 @@
+<resources>
+	<string name="app_name">AwarenessTest</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+
+	<string name="toggle_tracking">Toggle tracking</string>
+
+	<!-- Tabs -->
+	<string name="tab_fence">Fences</string>
+	<string name="tab_snapshot">Snapshots</string>
+	<string name="tab_fence_overview">Fences (new)</string>
+
+	<!-- Fences -->
+	<string name="fence_name_hint">Name of the fence</string>
+</resources>

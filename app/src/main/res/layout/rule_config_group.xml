@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://robobinding.org/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	style="@style/container">
+	<Spinner
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		bind:source="{types}"
+		bind:itemLayout="@layout/list_item_generic"
+		bind:dropdownLayout="@layout/list_item_generic"
+		bind:selectedItemPosition="${typesSelectedPosition}" />
+	<ListView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		bind:source="{allChildrenRules}"
+		bind:itemLayout="@layout/list_item_generic" />
+</LinearLayout>
