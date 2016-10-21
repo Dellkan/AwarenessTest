@@ -3,13 +3,13 @@ package no.zeppelin.awarenesstest.data;
 import com.dellkan.robobinding.helpers.model.PresentationModelWrapper;
 import com.dellkan.robobinding.helpers.modelgen.ItemPresentationModel;
 import com.dellkan.robobinding.helpers.modelgen.PresentationMethod;
-import com.dellkan.robobinding.helpers.modelgen.PresentationModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ItemPresentationModel
-public class EnumListItem<T extends Enum> extends PresentationModelWrapper {
+public class EnumListItem<T extends Enum> extends PresentationModelWrapper implements Serializable {
     T theEnum;
 
     public EnumListItem(T theEnum) {

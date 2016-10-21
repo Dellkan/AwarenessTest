@@ -1,22 +1,30 @@
-<LinearLayout
+<FrameLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	xmlns:bind="http://robobinding.org/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context="no.zeppelin.awarenesstest.fragments.FenceOverviewFragment"
 	style="@style/container">
-	<Button
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="Create new"
-		bind:onClick="createFence"
-		style="@style/button.primary" />
 	<ListView
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
+		android:layout_height="match_parent"
 		bind:source="{entries}"
 	    bind:itemLayout="@layout/list_item_fence_entry" />
-</LinearLayout>
+	<com.github.clans.fab.FloatingActionButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|end"
+		android:layout_marginRight="@dimen/padding.double"
+		android:layout_marginEnd="@dimen/padding.double"
+		android:layout_marginBottom="@dimen/padding.double"
+		android:scaleType="fitXY"
+		android:src="@drawable/ic_action_add"
+		app:fab_colorNormal="@color/button.fab.background"
+		app:fab_colorPressed="@color/button.fab.background.pressed"
+		app:fab_colorRipple="@color/button.fab.background.ripple"
+		app:fab_label="Activity"
+		bind:onClick="createFence" />
+</FrameLayout>

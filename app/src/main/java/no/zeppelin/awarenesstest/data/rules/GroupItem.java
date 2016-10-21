@@ -9,7 +9,6 @@ import com.google.android.gms.awareness.fence.AwarenessFence;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.zeppelin.awarenesstest.MainActivity;
 import no.zeppelin.awarenesstest.R;
 import no.zeppelin.awarenesstest.data.EnumListItem;
 import no.zeppelin.awarenesstest.data.FenceEntry;
@@ -68,15 +67,14 @@ public class GroupItem extends BaseRule {
         return R.layout.rule_config_group;
     }
 
-    @PresentationMethod
-    public void createChild() {
-        BaseRule rule = new ActivityRule(getFence());
-        rule.setParent(this);
-        RuleConfigFragment.newInstance(rule).show(MainActivity.getInstance().getSupportFragmentManager(), "Test");
-    }
-
     public void addRule(BaseRule rule) {
         this.rules.add(rule);
+        refresh("allChildrenRules");
+        this.getFence().refreshRules();
+    }
+
+    public void removeRule(BaseRule rule) {
+        this.rules.remove(rule);
         refresh("allChildrenRules");
         this.getFence().refreshRules();
     }
@@ -84,5 +82,39 @@ public class GroupItem extends BaseRule {
     @Override
     public String getRuleTitle() {
         return types.getSelectedItem().getEnum().name();
+    }
+
+    @PresentationMethod
+    public void createChild(RULE_TYPE type) {
+        BaseRule rule = null;
+
+        switch (type) {
+            case ACTIVITY:
+                rule = new ActivityRule(this.getFence());
+                break;
+            case BEACON:
+                rule = new BeaconRule(this.getFence());
+                break;
+            case HEADPHONE:
+                rule = new HeadphoneRule(this.getFence());
+                break;
+            case LOCATION:
+                rule = new LocationRule(this.getFence());
+                break;
+            case PLACE:
+                rule = new PlaceRule(this.getFence());
+                break;
+            case TIME:
+                rule = new TimeRule(this.getFence());
+                break;
+            case WEATHER:
+                rule = new WeatherRule(this.getFence());
+                break;
+        }
+
+        if (rule != null) {
+            rule.setParent(this);
+            RuleConfigFragment.newInstance(rule).show();
+        }
     }
 }

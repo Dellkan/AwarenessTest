@@ -1,7 +1,6 @@
 package no.zeppelin.awarenesstest.data.rules;
 
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 
 import com.dellkan.robobinding.helpers.model.PresentationModelWrapper;
 import com.dellkan.robobinding.helpers.modelgen.ItemPresentationModel;
@@ -10,11 +9,15 @@ import com.google.android.gms.awareness.fence.AwarenessFence;
 
 import java.io.Serializable;
 
-import no.zeppelin.awarenesstest.MainActivity;
 import no.zeppelin.awarenesstest.data.FenceEntry;
+import no.zeppelin.awarenesstest.fragments.RuleConfigFragment;
 
 @ItemPresentationModel
 public abstract class BaseRule extends PresentationModelWrapper implements Rule, Serializable {
+    public enum RULE_TYPE {
+        ACTIVITY, BEACON, HEADPHONE,
+        LOCATION, PLACE, TIME, WEATHER
+    }
     private boolean not;
 
     FenceEntry fence;
@@ -70,7 +73,16 @@ public abstract class BaseRule extends PresentationModelWrapper implements Rule,
     }
 
     private void dismissConfig() {
-        DialogFragment fragment = (DialogFragment) MainActivity.getInstance().getSupportFragmentManager().findFragmentByTag("Test");
-        fragment.getDialog().dismiss();
+        RuleConfigFragment.findAndDismiss();
+    }
+
+    @PresentationMethod
+    public void configure() {
+        RuleConfigFragment.newInstance(this).show();
+    }
+
+    @PresentationMethod
+    public void delete() {
+        parent.removeRule(this);
     }
 }

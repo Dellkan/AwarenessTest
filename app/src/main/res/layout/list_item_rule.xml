@@ -13,20 +13,27 @@
 		android:layout_weight="1"
 		tools:text="Activity Rule: Running"
 		bind:text="{ruleTitle}" />
-	<Button
+	<LinearLayout
+		android:orientation="horizontal"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="+"
-		bind:onClick="createChild"
-		android:minHeight="0dp"
-		android:minWidth="0dp"
-		style="@style/button.primary" />
-	<Button
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="X"
-		bind:onClick="createChild"
-		android:minHeight="0dp"
-		android:minWidth="0dp"
-		style="@style/button.secondary" />
+		android:divider="@drawable/divider_small"
+		android:showDividers="middle">
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Edit"
+			bind:onClick="configure"
+			android:minHeight="0dp"
+			android:minWidth="0dp"
+			style="@style/button.primary" />
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Delete"
+			bind:onClick="delete"
+			android:minHeight="0dp"
+			android:minWidth="0dp"
+			style="@style/button.secondary" />
+	</LinearLayout>
 </LinearLayout>

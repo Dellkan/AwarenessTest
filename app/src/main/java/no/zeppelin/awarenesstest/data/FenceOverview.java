@@ -9,16 +9,15 @@ import com.dellkan.robobinding.helpers.modelgen.PresentationMethod;
 import com.dellkan.robobinding.helpers.modelgen.PresentationModel;
 import com.google.android.gms.awareness.Awareness;
 import com.google.android.gms.awareness.fence.FenceUpdateRequest;
-import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-import no.zeppelin.awarenesstest.MainActivity;
+import java.io.Serializable;
+
 import no.zeppelin.awarenesstest.Variables;
-import no.zeppelin.awarenesstest.fragments.FenceConfigureFragment;
 
 @PresentationModel
-public class FenceOverview extends PresentationModelWrapper {
+public class FenceOverview extends PresentationModelWrapper implements Serializable {
     private FenceOverview() {
 
     }

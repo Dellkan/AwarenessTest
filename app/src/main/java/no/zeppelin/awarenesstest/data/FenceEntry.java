@@ -51,7 +51,6 @@ public class FenceEntry extends PresentationModelWrapper implements Serializable
 
     public void refreshRules() {
         rules.clear();
-        rules.add(rootRule);
         rules.addAll(rootRule.getAllSubRules());
         refresh();
     }
@@ -69,5 +68,40 @@ public class FenceEntry extends PresentationModelWrapper implements Serializable
         FenceOverview.getInstance().refreshFences();
 
         refresh();
+    }
+
+    @PresentationMethod
+    public void createActivityRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.ACTIVITY);
+    }
+
+    @PresentationMethod
+    public void createBeaconRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.BEACON);
+    }
+
+    @PresentationMethod
+    public void createHeadphoneRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.HEADPHONE);
+    }
+
+    @PresentationMethod
+    public void createLocationRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.LOCATION);
+    }
+
+    @PresentationMethod
+    public void createPlaceRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.PLACE);
+    }
+
+    @PresentationMethod
+    public void createTimeRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.TIME);
+    }
+
+    @PresentationMethod
+    public void createWeatherRule() {
+        rootRule.createChild(BaseRule.RULE_TYPE.WEATHER);
     }
 }

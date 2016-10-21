@@ -8,7 +8,7 @@ import no.zeppelin.awarenesstest.data.FenceEntry;
 public class FenceConfigureFragment extends ModelFragment {
     @Override
     public int getLayout() {
-        return R.layout.fragment_fence_configure;
+        return R.layout.fragment_fence_configure_simple;
     }
 
     public static FenceConfigureFragment newInstance(FenceEntry entry) {
