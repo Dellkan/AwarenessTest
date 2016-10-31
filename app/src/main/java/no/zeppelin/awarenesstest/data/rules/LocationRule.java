@@ -7,10 +7,14 @@ import com.dellkan.robobinding.helpers.modelgen.Stringify;
 import com.google.android.gms.awareness.fence.AwarenessFence;
 import com.google.android.gms.awareness.fence.LocationFence;
 
+import no.zeppelin.awarenesstest.R;
 import no.zeppelin.awarenesstest.data.FenceEntry;
 
 @PresentationModel
 public class LocationRule extends BaseRule {
+    @GetSet
+    String locationDescriptiveName;
+
     @GetSet
     @Stringify
     double latitude;
@@ -39,6 +43,16 @@ public class LocationRule extends BaseRule {
 
     @Override
     public int getLayout() {
-        return 0;
+        return R.layout.rule_config_location;
+    }
+
+    @Override
+    public PresentationModelWrapper getModel() {
+        return new LocationMapWrapper(this);
+    }
+
+    @Override
+    public String getRuleTitle() {
+        return locationDescriptiveName;
     }
 }

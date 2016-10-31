@@ -3,6 +3,7 @@ package no.zeppelin.awarenesstest.data.rules;
 import android.support.annotation.Nullable;
 
 import com.dellkan.robobinding.helpers.model.PresentationModelWrapper;
+import com.dellkan.robobinding.helpers.common.model.IHasDynamicLayout;
 import com.dellkan.robobinding.helpers.modelgen.ItemPresentationModel;
 import com.dellkan.robobinding.helpers.modelgen.PresentationMethod;
 import com.google.android.gms.awareness.fence.AwarenessFence;
@@ -13,12 +14,11 @@ import no.zeppelin.awarenesstest.data.FenceEntry;
 import no.zeppelin.awarenesstest.fragments.RuleConfigFragment;
 
 @ItemPresentationModel
-public abstract class BaseRule extends PresentationModelWrapper implements Rule, Serializable {
+public abstract class BaseRule extends PresentationModelWrapper implements Rule, IHasDynamicLayout, Serializable {
     public enum RULE_TYPE {
         ACTIVITY, BEACON, HEADPHONE,
         LOCATION, PLACE, TIME, WEATHER
     }
-    private boolean not;
 
     FenceEntry fence;
     public BaseRule(FenceEntry fence) {
@@ -53,11 +53,6 @@ public abstract class BaseRule extends PresentationModelWrapper implements Rule,
         return "BaseRule";
     }
 
-    @PresentationMethod
-    public void createChild() {
-
-    }
-
     boolean saved = false;
 
     @PresentationMethod
@@ -78,7 +73,12 @@ public abstract class BaseRule extends PresentationModelWrapper implements Rule,
 
     @PresentationMethod
     public void configure() {
-        RuleConfigFragment.newInstance(this).show();
+        RuleConfigFragment.newInstance(this.getModel()).show();
+    }
+
+    @Override
+    public PresentationModelWrapper getModel() {
+        return this;
     }
 
     @PresentationMethod

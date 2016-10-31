@@ -114,7 +114,7 @@ public class GroupItem extends BaseRule {
 
         if (rule != null) {
             rule.setParent(this);
-            RuleConfigFragment.newInstance(rule).show();
+            rule.configure();
         }
     }
 }

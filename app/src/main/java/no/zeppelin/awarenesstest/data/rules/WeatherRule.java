@@ -20,4 +20,9 @@ public class WeatherRule extends BaseRule {
     public int getLayout() {
         return 0;
     }
+
+    @Override
+    public String getRuleTitle() {
+        return null;
+    }
 }

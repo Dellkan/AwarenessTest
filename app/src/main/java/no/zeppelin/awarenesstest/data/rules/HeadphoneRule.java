@@ -1,10 +1,14 @@
 package no.zeppelin.awarenesstest.data.rules;
 
+import com.dellkan.robobinding.helpers.model.ListContainer;
+import com.dellkan.robobinding.helpers.modelgen.ListItems;
 import com.dellkan.robobinding.helpers.modelgen.PresentationModel;
 import com.google.android.gms.awareness.fence.AwarenessFence;
 import com.google.android.gms.awareness.fence.HeadphoneFence;
 import com.google.android.gms.awareness.state.HeadphoneState;
 
+import no.zeppelin.awarenesstest.R;
+import no.zeppelin.awarenesstest.data.EnumListItem;
 import no.zeppelin.awarenesstest.data.FenceEntry;
 
 @PresentationModel
@@ -27,15 +31,21 @@ public class HeadphoneRule extends BaseRule {
         }
     }
 
-    private HEADPHONE_TYPES fenceType = HEADPHONE_TYPES.PLUGGED_IN;
+    @ListItems
+    ListContainer<EnumListItem<HEADPHONE_TYPES>> headphoneTrigger = new ListContainer<>(EnumListItem.getList(HEADPHONE_TYPES.values()));
 
     @Override
     public AwarenessFence createFence() {
-        return HeadphoneFence.during(fenceType.getIndex());
+        return HeadphoneFence.during(headphoneTrigger.getSelectedItem().getEnum().getIndex());
     }
 
     @Override
     public int getLayout() {
-        return 0;
+        return R.layout.rule_config_headphone;
+    }
+
+    @Override
+    public String getRuleTitle() {
+        return String.format("the headphone is %s", headphoneTrigger.getSelectedItem().name());
     }
 }
