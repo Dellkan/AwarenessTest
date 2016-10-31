@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://robobinding.org/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:divider="@drawable/divider_small"
+	android:showDividers="middle"
+	style="@style/container.primary.large">
+	<Switch
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		bind:checked="${highPriority}"
+		android:text="High priority notification?" />
+	<android.support.design.widget.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<android.support.design.widget.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/action_notification_hint"
+			bind:text="${notificationText}" />
+	</android.support.design.widget.TextInputLayout>
+	<include layout="@layout/rule_config_save" />
+</LinearLayout>

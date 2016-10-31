@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://robobinding.org/android"
+	xmlns:map="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	style="@style/container.primary">
+	<!-- Location name -->
+	<android.support.design.widget.TextInputLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<android.support.design.widget.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/rule_config_location_name_hint"
+			bind:text="${locationDescriptiveName}" />
+	</android.support.design.widget.TextInputLayout>
+	<!-- Map -->
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@android:color/transparent">
+		<com.google.android.gms.maps.MapView
+			android:id="@+id/map"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			map:uiCompass="true"
+			map:uiRotateGestures="true"
+			map:uiScrollGestures="true"
+			map:uiTiltGestures="false"
+			map:uiZoomControls="true"
+			map:uiZoomGestures="true"
+			bind:onInit="init" />
+	</FrameLayout>
+</LinearLayout>

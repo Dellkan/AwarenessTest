@@ -42,22 +42,28 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-
     compile('org.robobinding:robobinding:0.8.15-SNAPSHOT:with-aop-and-dependencies')
+    apt 'org.robobinding:codegen:0.8.15-SNAPSHOT'
+
+    compile 'com.dellkan:robobinding-helpers-api:0.5.4-DEV'
+    compile 'com.dellkan:robobinding-helpers-common:0.5.4-DEV'
+    apt 'com.dellkan:robobinding-helpers-processor:0.5.4-DEV'
+
+    compile 'com.dellkan:net:0.1.0-DEV'
+    compile 'com.dellkan:fragment-bootstrap:0.1.1-DEV'
 
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
-    compile 'com.dellkan:robobinding-helpers-api:0.5.4-DEV'
-    compile 'com.dellkan:robobinding-helpers-common:0.5.4-DEV'
-    compile 'com.dellkan:net:0.1.0-DEV'
-    compile 'com.dellkan:fragment-bootstrap:0.1.1-DEV'
     compile 'com.android.support:support-v4:24.2.1'
+
     testCompile 'junit:junit:4.12'
-    apt 'org.robobinding:codegen:0.8.15-SNAPSHOT'
-    apt 'com.dellkan:robobinding-helpers-processor:0.5.4-DEV'
 
     compile 'com.github.clans:fab:1.6.4'
 
     // Google play
-    compile 'com.google.android.gms:play-services-awareness:9.6.1'
+    compile 'com.google.android.gms:play-services-awareness:9.8.0'
+    compile 'com.google.android.gms:play-services-maps:9.8.0'
+
+    // Joda time
+    compile 'joda-time:joda-time:2.9.4'
 }

@@ -1,6 +1,8 @@
 package no.zeppelin.awarenesstest.data;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetDialog;
+import android.widget.Toast;
 
 import com.dellkan.robobinding.helpers.model.ListContainer;
 import com.dellkan.robobinding.helpers.model.PresentationModelWrapper;
@@ -14,7 +16,9 @@ import com.google.android.gms.common.api.Status;
 
 import java.io.Serializable;
 
+import no.zeppelin.awarenesstest.MainActivity;
 import no.zeppelin.awarenesstest.Variables;
+import no.zeppelin.awarenesstest.fragments.FenceCreateFragment;
 
 @PresentationModel
 public class FenceOverview extends PresentationModelWrapper implements Serializable {
@@ -48,15 +52,30 @@ public class FenceOverview extends PresentationModelWrapper implements Serializa
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
+                        if (status.isCanceled()) {
+                            Toast.makeText(MainActivity.getInstance(), String.format("Got canceled: %s", status.getStatusMessage()), Toast.LENGTH_SHORT).show();
+                        } else if (status.isInterrupted()) {
+                            Toast.makeText(MainActivity.getInstance(), String.format("Got interrupted: %s", status.getStatusMessage()), Toast.LENGTH_SHORT).show();
+                        } else if (status.isSuccess()) {
+                            Toast.makeText(MainActivity.getInstance(), String.format("Success: %s", status.getStatusMessage()), Toast.LENGTH_SHORT).show();
+                        }
                         // console.addEntry("Fence added - " + CommonStatusCodes.getStatusCodeString(status.getStatusCode()));
                     }
                 });
+        refresh();
+    }
+
+    public static FenceEntry getFenceEntry(String name) {
+        for (FenceEntry fence : getInstance().entries) {
+            if (fence.name.equals(name)) {
+                return fence;
+            }
+        }
+        return null;
     }
 
     @PresentationMethod
     public void createFence() {
-        FenceEntry fenceEntry = new FenceEntry();
-        entries.add(fenceEntry);
-        fenceEntry.configure();
+        FenceCreateFragment.newInstance().show();
     }
 }

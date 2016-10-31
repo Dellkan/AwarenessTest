@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:bind="http://robobinding.org/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	tools:context=".MainActivity">
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
@@ -19,16 +21,51 @@
 				android:hint="@string/fence_name_hint"
 				bind:text="${name}" />
 		</android.support.design.widget.TextInputLayout>
-		<ListView
+		<RelativeLayout
 			android:layout_width="match_parent"
-			android:layout_height="0dp"
-			android:layout_weight="1"
-			bind:source="{rules}"
-			bind:itemLayout="@layout/list_item_rule" />
+			android:layout_height="match_parent"
+			bind:visibility="{listsEmpty}"
+			tools:visibility="gone">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:gravity="center_horizontal"
+				android:text="Nothing here yet.\nUse button down below to add items"/>
+		</RelativeLayout>
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			bind:visibility="{listsNotEmpty}">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="When..." />
+			<ListView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				tools:listitem="@layout/list_item_rule"
+				bind:source="{rules}"
+				bind:itemLayout="@layout/list_item_rule" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Then..." />
+			<ListView
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				tools:listitem="@layout/list_item_action"
+				bind:source="{actions}"
+				bind:itemLayout="@layout/list_item_action" />
+		</LinearLayout>
 	</LinearLayout>
 	<com.github.clans.fab.FloatingActionMenu
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:id="@+id/fabMenu"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
 		android:layout_gravity="bottom|end"
 		android:layout_marginRight="@dimen/padding.double"
 		android:layout_marginEnd="@dimen/padding.double"
@@ -41,67 +78,23 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_activity"
+			android:src="@drawable/ic_action_trigger"
 			app:fab_colorNormal="@color/button.fab.background"
 			app:fab_colorPressed="@color/button.fab.background.pressed"
 			app:fab_colorRipple="@color/button.fab.background.ripple"
 			app:fab_size="mini"
-			app:fab_label="Activity"
-			bind:onClick="createActivityRule" />
+			app:fab_label="Rule"
+			bind:onClick="createRule" />
 		<com.github.clans.fab.FloatingActionButton
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_location"
+			android:src="@drawable/ic_action_action"
 			app:fab_colorNormal="@color/button.fab.background"
 			app:fab_colorPressed="@color/button.fab.background.pressed"
 			app:fab_colorRipple="@color/button.fab.background.ripple"
 			app:fab_size="mini"
-			app:fab_label="Location"
-			bind:onClick="createLocationRule" />
-		<com.github.clans.fab.FloatingActionButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_beacon"
-			app:fab_colorNormal="@color/button.fab.background"
-			app:fab_colorPressed="@color/button.fab.background.pressed"
-			app:fab_colorRipple="@color/button.fab.background.ripple"
-			app:fab_size="mini"
-			app:fab_label="Beacon"
-			bind:onClick="createBeaconRule" />
-		<com.github.clans.fab.FloatingActionButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_headphones"
-			app:fab_colorNormal="@color/button.fab.background"
-			app:fab_colorPressed="@color/button.fab.background.pressed"
-			app:fab_colorRipple="@color/button.fab.background.ripple"
-			app:fab_size="mini"
-			app:fab_label="Headphone"
-			bind:onClick="createHeadphoneRule" />
-		<com.github.clans.fab.FloatingActionButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_time"
-			app:fab_colorNormal="@color/button.fab.background"
-			app:fab_colorPressed="@color/button.fab.background.pressed"
-			app:fab_colorRipple="@color/button.fab.background.ripple"
-			app:fab_size="mini"
-			app:fab_label="Time"
-			bind:onClick="createTimeRule" />
-		<com.github.clans.fab.FloatingActionButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:scaleType="fitXY"
-			android:src="@drawable/ic_action_weather"
-			app:fab_colorNormal="@color/button.fab.background"
-			app:fab_colorPressed="@color/button.fab.background.pressed"
-			app:fab_colorRipple="@color/button.fab.background.ripple"
-			app:fab_size="mini"
-			app:fab_label="Weather"
-			bind:onClick="createWeatherRule" />
+			app:fab_label="Action"
+			bind:onClick="createAction" />
 	</com.github.clans.fab.FloatingActionMenu>
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

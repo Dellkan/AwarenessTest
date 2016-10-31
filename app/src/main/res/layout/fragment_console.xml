@@ -5,17 +5,23 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="no.zeppelin.awarenesstest.fragments.AwarenessFragment">
-	<Button
+	tools:context="no.zeppelin.awarenesstest.fragments.AwarenessFragment"
+	android:gravity="center"
+	style="@style/container.primary">
+	<RelativeLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		bind:text="${buttonText}"
-		bind:onClick="toggleTracking"
-		style="@style/button.primary" />
+		android:layout_height="200dp"
+		bind:visibility="{entriesEmpty}">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:text="No log entries in this console yet" />
+	</RelativeLayout>
 	<ListView
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
+		android:layout_height="200dp"
 		bind:source="{entries}"
-	    bind:itemLayout="@layout/list_item_entry" />
+	    bind:itemLayout="@layout/list_item_entry"
+		bind:visibility="{entriesNotEmpty}" />
 </LinearLayout>

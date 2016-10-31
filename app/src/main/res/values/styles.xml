@@ -41,4 +41,13 @@
 		<item name="titleTextAppearance">@style/text.actionbarTitle</item>
 	</style>
 
+	<style name="Theme.Default.Dialog" parent="@style/Theme.AppCompat.Dialog"></style>
+
+	<style name="Theme.CustomDialog" parent="Theme.Default.Dialog">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:colorBackgroundCacheHint">@null</item>
+	</style>
+
 </resources>

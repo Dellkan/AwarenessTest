@@ -13,4 +13,34 @@
 
 	<!-- Fences -->
 	<string name="fence_name_hint">Name of the fence</string>
+
+	<!-- Rules -->
+	<string name="fence_rule_beacon_namespace_hint">Beacon namespace</string>
+	<string name="fence_rule_beacon_type_hint">Beacon type</string>
+
+	<string name="rule_name_activity">Activity</string>
+	<string name="rule_name_beacon">Beacon</string>
+	<string name="rule_name_headphone">Headphone</string>
+	<string name="rule_name_location">Location</string>
+	<string name="rule_name_place">Place</string>
+	<string name="rule_name_time">Time</string>
+	<string name="rule_name_weather">Weather</string>
+
+	<!-- Rule: Location -->
+	<string name="rule_config_location_name_hint">Helpful name</string>
+
+	<!-- Actions -->
+	<string name="action_name_notification">Notification</string>
+	<string name="action_name_sound">Sound</string>
+
+	<string name="action_notification_hint">Notification text</string>
+
+	<!-- Activities -->
+	<string name="activity_vehicle">driving</string>
+	<string name="activity_bicycle">bicycling</string>
+	<string name="activity_on_foot">on foot</string>
+	<string name="activity_still">still</string>
+	<string name="activity_tilting">tilting</string>
+	<string name="activity_walking">walking</string>
+	<string name="activity_running">running</string>
 </resources>

@@ -9,7 +9,7 @@
 	<color name="button.primary.background">#0077ff</color>
 	<color name="button.primary.text">#ffffff</color>
 
-	<color name="button.fam.background">@color/button.primary.background</color>
+	<color name="button.fam.background">#FF819f2b</color>
 	<color name="button.fam.background.pressed">@color/button.primary.background.pressed</color>
 	<color name="button.fam.background.ripple">#99FFFFFF</color>
 	<color name="button.fab.background">@color/button.primary.background</color>

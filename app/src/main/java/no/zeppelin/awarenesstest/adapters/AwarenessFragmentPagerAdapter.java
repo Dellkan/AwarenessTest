@@ -5,15 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.dellkan.ContextFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import no.zeppelin.awarenesstest.MainActivity;
 import no.zeppelin.awarenesstest.R;
-import no.zeppelin.awarenesstest.data.FenceOverview;
-import no.zeppelin.awarenesstest.fragments.FenceFragment;
 import no.zeppelin.awarenesstest.fragments.FenceOverviewFragment;
 import no.zeppelin.awarenesstest.fragments.SnapshotFragment;
 
@@ -22,9 +18,8 @@ public class AwarenessFragmentPagerAdapter extends FragmentPagerAdapter {
 
     public AwarenessFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
-        tabs.add(new TabEntry(FenceFragment.class, R.string.tab_fence));
-        tabs.add(new TabEntry(SnapshotFragment.class, R.string.tab_snapshot));
         tabs.add(new TabEntry(FenceOverviewFragment.class, R.string.tab_fence_overview));
+        // tabs.add(new TabEntry(SnapshotFragment.class, R.string.tab_snapshot));
     }
 
     @Override

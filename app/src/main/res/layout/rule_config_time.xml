@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://robobinding.org/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:divider="@drawable/divider_small"
+	android:showDividers="middle"
+	style="@style/container">
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		bind:text="${ruleTitle}"
+		bind:onClick="save"
+		tools:text="Between 04:30 and 17:30"
+		style="@style/button.primary" />
+</LinearLayout>

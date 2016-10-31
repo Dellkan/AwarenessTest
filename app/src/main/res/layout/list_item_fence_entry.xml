@@ -3,14 +3,59 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:bind="http://robobinding.org/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:orientation="vertical"
+	android:orientation="horizontal"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+	android:layout_height="wrap_content"
+	android:divider="@drawable/divider_tiny"
+	android:showDividers="middle"
+	bind:onClick="toggle"
+	android:gravity="center_vertical"
 	style="@style/container">
-	<TextView
-		android:layout_width="match_parent"
+	<ImageButton
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		tools:text="FenceName"
+		android:src="@drawable/ic_action_play"
+		bind:onClick="toggle"
+		bind:visibility="{toggleInactive}"
+		tools:visibility="gone"
+		style="@style/button.primary" />
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_action_stop"
+		bind:onClick="toggle"
+		bind:visibility="{toggleActive}"
+		style="@style/button.secondary" />
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:text="FenceName"
+			bind:text="{name}" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			tools:text="Last trigger: 1 min ago"
+			bind:text="{lastTrigger}" />
+	</LinearLayout>
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Edit"
 		bind:onClick="configure"
-	    bind:text="{name}" />
+		android:minHeight="0dp"
+		android:minWidth="0dp"
+		style="@style/button.primary" />
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Delete"
+		bind:onClick="delete"
+		android:minHeight="0dp"
+		android:minWidth="0dp"
+		style="@style/button.secondary" />
 </LinearLayout>
